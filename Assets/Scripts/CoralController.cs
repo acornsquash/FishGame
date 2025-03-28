@@ -15,7 +15,7 @@ public class CoralController : MonoBehaviour
         }
    }
 
-   public void AddCoral(bool isLeft)
+   public void AddCoralToSpot(string placement, int coralIndex)
    {
         Debug.Log("adding corals?");
         if (Corals.Length == 0)
@@ -25,10 +25,10 @@ public class CoralController : MonoBehaviour
         }
 
         // Choose a random coral from the list
-        GameObject chosenCoral = Corals[Random.Range(0, Corals.Length)];
+        GameObject chosenCoral = Corals[coralIndex];
 
         // Determine which spot to place it in
-        GameObject targetSpot = isLeft ? CoralSpaceLeft : CoralSpaceRight;
+        GameObject targetSpot = placement == "Left" ? CoralSpaceLeft : CoralSpaceRight;
 
         // Instantiate the coral at the spot
         Instantiate(chosenCoral, targetSpot.transform.position, Quaternion.identity, targetSpot.transform);
