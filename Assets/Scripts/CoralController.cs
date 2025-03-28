@@ -24,7 +24,7 @@ public class CoralController : MonoBehaviour
             return;
         }
 
-        // Choose a random coral from the list
+        // select the coral by the index
         GameObject chosenCoral = Corals[coralIndex];
 
         // Determine which spot to place it in
