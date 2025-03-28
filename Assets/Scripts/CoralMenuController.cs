@@ -8,11 +8,12 @@ public class CoralMenuController : MonoBehaviour
     public GameObject CoralSpaceRight; // Right coral spot reference
 
     private CoralController coralController;
+    private string selectedPlacement = "";
 
     private void Start()
     {
         // Initially hide the coral menu
-        // coralMenu.SetActive(false);
+        coralMenu.SetActive(false);
 
         coralController = FindFirstObjectByType<CoralController>();
 
@@ -27,8 +28,7 @@ public class CoralMenuController : MonoBehaviour
     {
         coralMenu.SetActive(true);
 
-        // pass the string into AddCoral so it know where to put the coral???
-        // public chosenPlacement coralSpot;
+       selectedPlacement = coralSpot;
     }
 
     void AddCoral(Button coralButton)
@@ -36,7 +36,9 @@ public class CoralMenuController : MonoBehaviour
         Debug.Log("Coral added: " + coralButton.name);
         coralMenu.SetActive(false); // Hide menu after selection
 
-        coralController.AddCoralToSpot("Left", 0);
+        int coralIndex = coralButton.name == "coral1button" ? 0 : 1;
+        
+        coralController.AddCoralToSpot(selectedPlacement, coralIndex);
 
     }
 
