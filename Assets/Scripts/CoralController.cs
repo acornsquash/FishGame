@@ -17,7 +17,6 @@ public class CoralController : MonoBehaviour
 
    public void AddCoralToSpot(string placement, int coralIndex)
    {
-        Debug.Log("adding corals?");
         if (Corals.Length == 0)
         {
             Debug.LogError("No coral prefabs assigned!");
@@ -29,6 +28,15 @@ public class CoralController : MonoBehaviour
 
         // Determine which spot to place it in
         GameObject targetSpot = placement == "Left" ? CoralSpaceLeft : CoralSpaceRight;
+
+        if (targetSpot.transform.childCount > 0)
+        {
+            // Remove the existing coral
+            foreach (Transform child in targetSpot.transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
 
         // Instantiate the coral at the spot
         Instantiate(chosenCoral, targetSpot.transform.position, Quaternion.identity, targetSpot.transform);

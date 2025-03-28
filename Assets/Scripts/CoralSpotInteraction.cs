@@ -15,7 +15,6 @@ public class CoralSpotInteraction : MonoBehaviour
     {
         if (coralMenuController != null)
         {
-            // Show the coral menu when a spot is clicked
             coralMenuController.ShowCoralMenu(chosenPlacement);
         }
     }
