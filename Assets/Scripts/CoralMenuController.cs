@@ -12,7 +12,8 @@ public class CoralMenuController : MonoBehaviour
     public GameObject CoralSpaceBottomRight;
 
     private CoralController coralController;
-    private string selectedPlacement = "";
+    private ValidPlacement selectedPlacement = ValidPlacement.Left;
+
 
     private void Start()
     {
@@ -28,7 +29,7 @@ public class CoralMenuController : MonoBehaviour
         }
     }
 
-    public void ShowCoralMenu(string coralSpot)
+    public void ShowCoralMenu(ValidPlacement coralSpot)
     {
         coralMenu.SetActive(true);
 

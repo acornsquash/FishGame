@@ -1,5 +1,13 @@
 using UnityEngine;
 
+public enum ValidPlacement
+   {
+    Left,
+    Right,
+    BottomLeft,
+    BottomRight
+   };
+
 public class CoralController : MonoBehaviour
 {
    public GameObject CoralSpaceLeft;
@@ -19,7 +27,7 @@ public class CoralController : MonoBehaviour
         }
    }
 
-   public void AddCoralToSpot(string placement, int coralIndex)
+   public void AddCoralToSpot(ValidPlacement placement, int coralIndex)
    {
         if (Corals.Length == 0)
         {
@@ -33,10 +41,10 @@ public class CoralController : MonoBehaviour
         // Determine which spot to place it in
         GameObject targetSpot = placement switch
         {
-            "Left" => CoralSpaceLeft,
-            "Right" => CoralSpaceRight,
-            "BottomLeft" => CoralSpaceBottomLeft,
-            "BottomRight" => CoralSpaceBottomRight,
+            ValidPlacement.Left => CoralSpaceLeft,
+            ValidPlacement.Right => CoralSpaceRight,
+            ValidPlacement.BottomLeft => CoralSpaceBottomLeft,
+            ValidPlacement.BottomRight => CoralSpaceBottomRight
         };
 
         // if there is already a coral in the spot, remove it
