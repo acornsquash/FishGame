@@ -5,6 +5,10 @@ public class CoralController : MonoBehaviour
    public GameObject CoralSpaceLeft;
    public GameObject CoralSpaceRight;
 
+   public GameObject CoralSpaceBottomRight;
+
+   public GameObject CoralSpaceBottomLeft;
+
    public GameObject[] Corals;
 
    void Start()
@@ -27,11 +31,17 @@ public class CoralController : MonoBehaviour
         GameObject chosenCoral = Corals[coralIndex];
 
         // Determine which spot to place it in
-        GameObject targetSpot = placement == "Left" ? CoralSpaceLeft : CoralSpaceRight;
+        GameObject targetSpot = placement switch
+        {
+            "Left" => CoralSpaceLeft,
+            "Right" => CoralSpaceRight,
+            "BottomLeft" => CoralSpaceBottomLeft,
+            "BottomRight" => CoralSpaceBottomRight,
+        };
 
+        // if there is already a coral in the spot, remove it
         if (targetSpot.transform.childCount > 0)
         {
-            // Remove the existing coral
             foreach (Transform child in targetSpot.transform)
             {
                 Destroy(child.gameObject);

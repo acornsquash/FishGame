@@ -4,7 +4,7 @@ public class CoralSpotInteraction : MonoBehaviour
 {
     private CoralMenuController coralMenuController;
 
-    public string chosenPlacement; // left or right but??
+    public string chosenPlacement; // left or right
     void Start()
     {
         coralMenuController = FindFirstObjectByType<CoralMenuController>();

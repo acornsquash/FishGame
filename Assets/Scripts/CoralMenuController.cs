@@ -7,6 +7,10 @@ public class CoralMenuController : MonoBehaviour
     public GameObject CoralSpaceLeft; // Left coral spot reference
     public GameObject CoralSpaceRight; // Right coral spot reference
 
+    public GameObject CoralSpaceBottomLeft;
+
+    public GameObject CoralSpaceBottomRight;
+
     private CoralController coralController;
     private string selectedPlacement = "";
 
