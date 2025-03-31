@@ -44,7 +44,8 @@ public class CoralController : MonoBehaviour
             ValidPlacement.Left => CoralSpaceLeft,
             ValidPlacement.Right => CoralSpaceRight,
             ValidPlacement.BottomLeft => CoralSpaceBottomLeft,
-            ValidPlacement.BottomRight => CoralSpaceBottomRight
+            ValidPlacement.BottomRight => CoralSpaceBottomRight,
+            _ => null
         };
 
         // if there is already a coral in the spot, remove it
@@ -54,9 +55,14 @@ public class CoralController : MonoBehaviour
             {
                 Destroy(child.gameObject);
             }
-        }
+        };
 
         // Instantiate the coral at the spot
-        Instantiate(chosenCoral, targetSpot.transform.position, Quaternion.identity, targetSpot.transform);
+        if (targetSpot != null) {
+            Instantiate(chosenCoral, targetSpot.transform.position, Quaternion.identity, targetSpot.transform);
+        } else {
+            Debug.LogWarning("invalid placement selection");
+        };
+        
    }
 }
