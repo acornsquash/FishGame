@@ -19,6 +19,9 @@ public class CoralController : MonoBehaviour
 
    public GameObject[] Corals;
 
+    private SpriteRenderer spriteRenderer;
+
+
    void Start()
    {
 
@@ -44,6 +47,10 @@ public class CoralController : MonoBehaviour
             ValidPlacement.BottomRight => CoralSpaceBottomRight,
             _ => null
         };
+
+        spriteRenderer = targetSpot.GetComponent<SpriteRenderer>();
+
+        spriteRenderer.enabled = false;
 
         // if there is already a coral in the spot, remove it
         if (targetSpot.transform.childCount > 0)
