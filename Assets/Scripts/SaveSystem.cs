@@ -14,13 +14,11 @@ public class SaveSystem : MonoBehaviour
     }
 
     // Method to save game data
-    public void SaveGame(List<string> placedCorals, List<string> spawnedFish)
+    public void SaveGame(List<string> placedCorals)
     {
         SaveData data = new SaveData();
-        data.lastExitTime = DateTime.Now.ToString(); // Save the current date/time
-        data.placedCorals = placedCorals; // Save the placed corals
-        data.spawnedFish = spawnedFish; // Save the spawned fish
-
+        data.lastExitTime = DateTime.Now.ToString();
+        data.placedCorals = placedCorals;
         string json = JsonUtility.ToJson(data); // Serialize the data to JSON format
 
         // Write the JSON string to the save file

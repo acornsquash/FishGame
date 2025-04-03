@@ -11,20 +11,18 @@ public class LoadSystem : MonoBehaviour
     {
         savePath = Application.persistentDataPath + "/saveData.json";
     }
-
-    // Method to load game data
     public SaveData LoadGame()
     {
-        if (File.Exists(savePath)) // Check if the save file exists
+        if (File.Exists(savePath))
         {
             string json = File.ReadAllText(savePath); // Read the file contents
             SaveData data = JsonUtility.FromJson<SaveData>(json); // Deserialize JSON into SaveData object
-            return data; // Return the loaded data
+            return data;
         }
         else
         {
             Debug.Log("No saved data found.");
-            return null; // Return null if there's no save data
+            return null;
         }
     }
 }
