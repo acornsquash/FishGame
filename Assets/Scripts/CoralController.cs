@@ -21,10 +21,7 @@ public class CoralController : MonoBehaviour
 
    void Start()
    {
-        if (CoralSpaceLeft == null || CoralSpaceRight == null) 
-        {
-            Debug.LogError("no spots defined for coral placement.");
-        }
+
    }
 
    public void AddCoralToSpot(ValidPlacement placement, int coralIndex)
@@ -63,6 +60,5 @@ public class CoralController : MonoBehaviour
         } else {
             Debug.LogWarning("invalid placement selection");
         };
-        
    }
 }
