@@ -13,24 +13,24 @@ public class GameManager : MonoBehaviour
         loadSystem = GetComponent<LoadSystem>();
 
         // Load game data when the game starts
-        SaveData savedData = loadSystem.LoadGame();
+        // SaveData savedData = loadSystem.LoadGame();
         
-        if (savedData.placedCorals != null)
-        {
-            loadCorals(savedData);
-        }
+        // if (savedData != null)
+        // {
+        //     loadCorals(savedData);
+        // }
     }
 
     void OnApplicationQuit()
     {
-        // get the corals and add them here
+        // get the corals (which are saved in CoralController) and add them here
         List<string> placedCorals = new List<string>(); 
         saveSystem.SaveGame(placedCorals); // Save the game
     }
 
     void loadCorals(SaveData savedData)
     {
-        // Logic to load corals that were saved before
+        // then here load corals that were saved before
         Debug.Log("loaded based on saved data.");
     }
 }

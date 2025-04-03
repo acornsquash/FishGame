@@ -21,7 +21,6 @@ public class SaveSystem : MonoBehaviour
         data.placedCorals = placedCorals;
         string json = JsonUtility.ToJson(data); // Serialize the data to JSON format
 
-        // Write the JSON string to the save file
         File.WriteAllText(savePath, json);
 
         Debug.Log("Game saved.");

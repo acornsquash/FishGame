@@ -19,6 +19,8 @@ public class CoralController : MonoBehaviour
 
    public GameObject[] Corals;
 
+   public GameObject[] PlacedCorals;
+
     private SpriteRenderer spriteRenderer;
 
 
@@ -64,6 +66,9 @@ public class CoralController : MonoBehaviour
         // Instantiate the coral at the spot
         if (targetSpot != null) {
             Instantiate(chosenCoral, targetSpot.transform.position, Quaternion.identity, targetSpot.transform);
+
+            // adjust list of current placed corals to be saved when game closes
+            // PlacedCorals = updated placed corals?? 
         } else {
             Debug.LogWarning("invalid placement selection");
         };
