@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public enum ValidPlacement
    {
@@ -19,14 +20,25 @@ public class CoralController : MonoBehaviour
 
    public GameObject[] Corals;
 
-   public GameObject[] PlacedCorals;
+   public class CoralData {
+        public string coralType;
+        public ValidPlacement placement;
+   }
 
-    private SpriteRenderer spriteRenderer;
+   public GameObject[] PlacedCorals = new GameObject[4];
+
+   public List<CoralData> PlacedCoralsList;
+
+   public List<CoralData> GetPlacedCoralsList() {
+        return PlacedCoralsList;
+   }
+
+   private SpriteRenderer spriteRenderer;
 
 
    void Start()
    {
-
+        PlacedCoralsList = new List<CoralData>();
    }
 
    public void AddCoralToSpot(ValidPlacement placement, int coralIndex)
@@ -39,6 +51,8 @@ public class CoralController : MonoBehaviour
 
         // select the coral by the index
         GameObject chosenCoral = Corals[coralIndex];
+
+        Debug.Log($"Coral index: {coralIndex}, Corals.Length: {Corals.Length}, chosenCoral: {Corals[coralIndex]}");
 
         // Determine which spot to place it in
         GameObject targetSpot = placement switch
@@ -63,14 +77,22 @@ public class CoralController : MonoBehaviour
             }
         };
 
-        // Instantiate the coral at the spot
-        if (targetSpot != null) {
-            Instantiate(chosenCoral, targetSpot.transform.position, Quaternion.identity, targetSpot.transform);
+        // Instantiate new coral
+        GameObject newCoral = Instantiate(chosenCoral, targetSpot.transform.position, Quaternion.identity, targetSpot.transform);
+        Debug.Log("coralname: " + Corals[coralIndex].name);
 
-            // adjust list of current placed corals to be saved when game closes
-            // PlacedCorals = updated placed corals?? 
-        } else {
-            Debug.LogWarning("invalid placement selection");
-        };
+        // // Store coral GameObject reference ????
+        // int spotIndex = (int)placement;
+        // PlacedCorals[spotIndex] = newCoral;
+
+        // Update list for saving
+        PlacedCoralsList.RemoveAll(c => c.placement == placement); // Remove existing entry if present
+        PlacedCoralsList.Add(new CoralData
+            {
+                coralType = Corals[coralIndex].name,
+                placement = placement
+            });
+        Debug.Log($"PlacedCorals length: {PlacedCoralsList.Count}");
+        Debug.Log($"first index: {PlacedCoralsList[0].coralType} {PlacedCoralsList[0].placement}");
    }
 }
