@@ -36,8 +36,10 @@ public class CoralController : MonoBehaviour
    private SpriteRenderer spriteRenderer;
 
 
+
    void Start()
    {
+        Debug.Log("Coral Controller Start");
         PlacedCoralsList = new List<CoralData>();
    }
 

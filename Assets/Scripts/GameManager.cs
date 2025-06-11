@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     private SaveSystem saveSystem;
     private LoadSystem loadSystem;
+
+    public CoralController coralController;
     void Start()
     {
         saveSystem = GetComponent<SaveSystem>();
@@ -24,8 +26,13 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("on application quit");
         // get the corals (which are saved in CoralController) and add them here
-    //     GameObject[] placedCorals = coralController.GetPlacedCorals;
-
+        if (coralController != null) {
+            List<CoralController.CoralData> placedCoralsList = coralController.GetPlacedCoralsList();
+            Debug.Log($"placedCorals: {placedCoralsList}");
+        } else {
+            Debug.Log("No Coral Controller");
+        }
+        
     //     foreach (var item in placedCorals) {
     //         Debug.Log("placed" + item);
     //     } 

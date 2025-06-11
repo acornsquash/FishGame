@@ -1301,6 +1301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5307e507c734745a5bc49bb8ee335380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coralController: {fileID: 1399834032}
 --- !u!4 &1130422712
 Transform:
   m_ObjectHideFlags: 0
@@ -1473,6 +1474,7 @@ MonoBehaviour:
   Corals:
   - {fileID: 3769456894882295696, guid: 64d22813307a24591a228e7eff5370ed, type: 3}
   - {fileID: 1043601438894770202, guid: 1d7209adde6db40b48252800fbd42246, type: 3}
+  PlacedCorals: []
 --- !u!1 &1574979123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1908,9 +1910,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1130422712}
+  - {fileID: 1399834031}
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 1377640025}
   - {fileID: 824816542}
-  - {fileID: 1399834031}
   - {fileID: 454697154}
