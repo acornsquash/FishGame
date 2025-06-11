@@ -4,22 +4,11 @@ using System.IO;
 using UnityEngine;
 public class GameManager : MonoBehaviour
 {
-    private SaveSystem saveSystem;
-    private LoadSystem loadSystem;
-
     public CoralController coralController;
     void Start()
     {
-        saveSystem = GetComponent<SaveSystem>();
-        loadSystem = GetComponent<LoadSystem>();
-
-        // Load game data when the game starts
-        // SaveData savedData = loadSystem.LoadGame();
-        
-        // if (savedData != null)
-        // {
-        //     loadCorals(savedData);
-        // }
+        Debug.Log("Game Manager Start");
+        LoadPlacedCorals();
     }
 
     void OnApplicationQuit()
@@ -28,21 +17,61 @@ public class GameManager : MonoBehaviour
         // get the corals (which are saved in CoralController) and add them here
         if (coralController != null) {
             List<CoralController.CoralData> placedCoralsList = coralController.GetPlacedCoralsList();
-            Debug.Log($"placedCorals: {placedCoralsList}");
+            Debug.Log($" saving placedCorals: {placedCoralsList}");
+            SaveCorals(placedCoralsList);
         } else {
             Debug.Log("No Coral Controller");
         }
-        
-    //     foreach (var item in placedCorals) {
-    //         Debug.Log("placed" + item);
-    //     } 
-    //     Debug.Log("placed Corals");
-    //     saveSystem.SaveGame(placedCorals); // Save the game
     }
 
-    // void loadCorals(SaveData savedData)
-    // {
-    //     // then here load corals that were saved before
-    //     Debug.Log("loaded based on saved data.");
-    // }
+    void SaveCorals(List<CoralController.CoralData> corals)
+    {
+        Debug.Log($"Save these Corals: " + corals[0]);
+        string json = JsonUtility.ToJson(new CoralSaveDataWrapper(corals));
+        Debug.Log($"Saving JSON: " + json);
+        PlayerPrefs.SetString("PlacedCorals", json);
+        PlayerPrefs.Save();
+    }
+
+    [System.Serializable]
+    public class CoralSaveDataWrapper
+    {
+        public List<CoralController.CoralData> corals;
+
+        public CoralSaveDataWrapper(List<CoralController.CoralData> coralList)
+        {
+            corals = coralList;
+        }
+    }
+
+
+    public void LoadPlacedCorals()
+    {
+        string json = PlayerPrefs.GetString("PlacedCorals", "");
+        Debug.Log("Loaded JSON: " + json);
+
+        if (!string.IsNullOrEmpty(json))
+        {
+            CoralSaveDataWrapper wrapper = JsonUtility.FromJson<CoralSaveDataWrapper>(json);
+        
+            Debug.Log($"wrapper, {wrapper}");
+            if (wrapper != null && wrapper.corals != null)
+            {
+                Debug.Log($"wrapper, {wrapper.corals}");
+                foreach (CoralController.CoralData coral in wrapper.corals)
+                {
+                    // Call your existing logic to re-place the coral
+                     coralController.AddCoralToSpot(coral.placement, coral.coralIndex);
+                }
+            }
+            else
+            {
+                Debug.LogWarning("Loaded wrapper or coral list was null.");
+            }
+        }
+        else
+        {
+            Debug.Log("No coral data found to load.");
+        }
+    }
 }
