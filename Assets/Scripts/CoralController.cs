@@ -42,7 +42,10 @@ public class CoralController : MonoBehaviour
    void Start()
    {
         Debug.Log("Coral Controller Start");
-        PlacedCoralsList = new List<CoralData>();
+        // if no saved corals, initialize empty list
+        if (PlacedCoralsList == null) {
+            PlacedCoralsList = new List<CoralData>();
+        }
    }
 
    public void AddCoralToSpot(ValidPlacement placement, int coralIndex)
@@ -55,8 +58,6 @@ public class CoralController : MonoBehaviour
 
         // select the coral by the index
         GameObject chosenCoral = Corals[coralIndex];
-
-        // Debug.Log($"Coral index: {coralIndex}, Corals.Length: {Corals.Length}, chosenCoral: {Corals[coralIndex]}");
 
         // Determine which spot to place it in
         GameObject targetSpot = placement switch
@@ -83,21 +84,14 @@ public class CoralController : MonoBehaviour
 
         // Instantiate new coral
         GameObject newCoral = Instantiate(chosenCoral, targetSpot.transform.position, Quaternion.identity, targetSpot.transform);
-        // Debug.Log("coralname: " + Corals[coralIndex].name);
 
-        // // Store coral GameObject reference ????
-        // int spotIndex = (int)placement;
-        // PlacedCorals[spotIndex] = newCoral;
-
-        // Update list for saving
-        PlacedCoralsList.RemoveAll(c => c.placement == placement); // Remove existing entry if present
+        // update list
+        PlacedCoralsList.RemoveAll(c => c.placement == placement);
         PlacedCoralsList.Add(new CoralData
             {   
                 coralIndex = coralIndex,
                 coralType = Corals[coralIndex].name,
                 placement = placement
             });
-        // Debug.Log($"PlacedCorals length: {PlacedCoralsList.Count}");
-        // Debug.Log($"first index: {PlacedCoralsList[0].coralType} {PlacedCoralsList[0].placement}");
    }
 }

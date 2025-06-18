@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log($"wrapper, {wrapper.corals}");
                 foreach (CoralController.CoralData coral in wrapper.corals)
                 {
-                    // Call your existing logic to re-place the coral
+                    // add the saved coral
                      coralController.AddCoralToSpot(coral.placement, coral.coralIndex);
                 }
             }
