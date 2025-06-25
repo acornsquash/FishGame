@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     public CoralController coralController;
     void Start()
     {
-        Debug.Log("Game Manager Start");
         LoadPlacedCorals();
     }
 

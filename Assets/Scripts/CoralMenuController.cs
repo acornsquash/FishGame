@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 public class CoralMenuController : MonoBehaviour
 {
-    public GameObject coralMenu;  // The panel to show/hide
-    public Button[] coralButtons;  // Buttons to choose corals
-    public GameObject CoralSpaceLeft; // Left coral spot reference
-    public GameObject CoralSpaceRight; // Right coral spot reference
+    public GameObject coralMenu;
+    public Button[] coralButtons;
+    public GameObject CoralSpaceLeft;
+    public GameObject CoralSpaceRight;
 
     public GameObject CoralSpaceBottomLeft;
 
@@ -17,12 +17,11 @@ public class CoralMenuController : MonoBehaviour
 
     private void Start()
     {
-        // Initially hide the coral menu
         coralMenu.SetActive(false);
 
         coralController = FindFirstObjectByType<CoralController>();
 
-        // Set up button listeners to add corals
+        // button listeners to add corals
         foreach (var button in coralButtons)
         {
             button.onClick.AddListener(() => AddCoral(button));
@@ -39,7 +38,7 @@ public class CoralMenuController : MonoBehaviour
     void AddCoral(Button coralButton)
     {
         Debug.Log("Coral added: " + coralButton.name);
-        coralMenu.SetActive(false); // Hide menu after selection
+        coralMenu.SetActive(false); 
 
         int coralIndex = coralButton.name == "coral1button" ? 0 : 1;
         
