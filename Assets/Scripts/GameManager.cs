@@ -5,9 +5,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public CoralController coralController;
+    public FishController fishController;
     void Start()
     {
         LoadPlacedCorals();
+        LoadFish();
     }
 
     void OnApplicationQuit()
@@ -72,5 +74,11 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("No coral data found to load.");
         }
+    }
+
+    public void LoadFish()
+    {
+        List<CoralController.CoralData> placedCorals = coralController.GetPlacedCoralsList();
+        fishController.TrySpawnFish(placedCorals);
     }
 }
