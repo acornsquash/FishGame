@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         LoadPlacedCorals();
-        LoadFish();
+        // LoadFish();
     }
 
     void OnApplicationQuit()
