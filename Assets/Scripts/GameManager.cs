@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         LoadPlacedCorals();
-        // LoadFish();
+        LoadFish();
     }
 
     void OnApplicationQuit()
@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
     public void LoadFish()
     {
         List<CoralController.CoralData> placedCorals = coralController.GetPlacedCoralsList();
+        Debug.Log("Load Fish");
         fishController.TrySpawnFish(placedCorals);
     }
 }

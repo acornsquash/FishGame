@@ -38,6 +38,7 @@ public class FishController: MonoBehaviour
 
     void SpawnFish()
     {
+        Debug.Log("spawn fish");
         Vector3 spawnPos = GetRandomFishSpawnPosition();
         Instantiate(fish1, spawnPos, Quaternion.identity);
     }
@@ -46,6 +47,7 @@ public class FishController: MonoBehaviour
     {
         // randomized placement ?
         Vector2 randomPos = new Vector2(Random.Range(-2f, 2f), Random.Range(-1f, 1f));
+        Debug.Log($"random: {randomPos}");
         return FishSpawnArea != null ? FishSpawnArea.position + (Vector3)randomPos : randomPos;
     }
 
