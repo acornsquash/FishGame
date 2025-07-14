@@ -1031,7 +1031,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Fish: []
-  fish1: {fileID: 0}
   FishSpawnArea: {fileID: 568631269}
 --- !u!1 &619394800
 GameObject:
@@ -1553,8 +1552,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc3fdfee18f044178b425aa97dc2942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Fish: []
-  fish1: {fileID: 8029216143352399336, guid: f2c164c0705f94c73a0d907ef312f9ec, type: 3}
+  Fish:
+  - {fileID: 8029216143352399336, guid: f2c164c0705f94c73a0d907ef312f9ec, type: 3}
+  - {fileID: 3140732318719222249, guid: 6e43e9385938f48429b58b28b9454ca9, type: 3}
+  - {fileID: 871287412795726798, guid: d4caad07ed896454f98abe61fe90cb04, type: 3}
+  - {fileID: 1485338189423884385, guid: d74f8aed200934c27867a6afca5fc1eb, type: 3}
   FishSpawnArea: {fileID: 568631269}
 --- !u!4 &1418955335
 Transform:
@@ -2002,67 +2004,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034273404}
   m_CullTransparentMesh: 1
---- !u!1001 &1195220366767843393
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1430543426650439152, guid: f2c164c0705f94c73a0d907ef312f9ec, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430543426650439152, guid: f2c164c0705f94c73a0d907ef312f9ec, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430543426650439152, guid: f2c164c0705f94c73a0d907ef312f9ec, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430543426650439152, guid: f2c164c0705f94c73a0d907ef312f9ec, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430543426650439152, guid: f2c164c0705f94c73a0d907ef312f9ec, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430543426650439152, guid: f2c164c0705f94c73a0d907ef312f9ec, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430543426650439152, guid: f2c164c0705f94c73a0d907ef312f9ec, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430543426650439152, guid: f2c164c0705f94c73a0d907ef312f9ec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430543426650439152, guid: f2c164c0705f94c73a0d907ef312f9ec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430543426650439152, guid: f2c164c0705f94c73a0d907ef312f9ec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5631280758874340714, guid: f2c164c0705f94c73a0d907ef312f9ec, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8029216143352399336, guid: f2c164c0705f94c73a0d907ef312f9ec, type: 3}
-      propertyPath: m_Name
-      value: fish1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f2c164c0705f94c73a0d907ef312f9ec, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2075,4 +2016,3 @@ SceneRoots:
   - {fileID: 1377640025}
   - {fileID: 824816542}
   - {fileID: 454697154}
-  - {fileID: 1195220366767843393}
